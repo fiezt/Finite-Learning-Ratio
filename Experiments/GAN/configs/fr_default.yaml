@@ -1,0 +1,38 @@
+data:
+  img_size: 32
+  nlabels: 1
+  train_dir: data
+  test_dir: data
+generator:
+  name: resnet
+  kwargs:
+    nfilter_max: 1024
+    embed_size: 1
+discriminator:
+  name: resnet
+  kwargs:
+    nfilter_max: 1024
+    embed_size: 1
+z_dist:
+  type: gauss
+  dim: 256
+training:
+  gan_type: standard
+  reg_type: real
+  batch_size: 64
+  nworkers: 32
+  take_model_average: true
+  model_average_reinit: false
+  monitoring: 'none'
+  sample_every: 10000
+  inception_every: -1
+  save_every: 10000
+  backup_every: 10000
+  restart_every: -1
+  optimizer: rmsprop
+  d_steps: 1
+  equalize_lr: false
+interpolations:
+  nzs: 10
+  nsubsteps: 75
+  
